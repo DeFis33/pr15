@@ -8,9 +8,9 @@ using System;
 
 class Student
 {
-    public string FullName;
-    public string GroupNumber;
-    public int[] Grades = new int[5];
+    public string fullname;
+    public string group;
+    public int[] grades = new int[5];
 }
 
 class Program
@@ -32,17 +32,17 @@ class Program
 
                 Console.WriteLine($"Студент {i + 1}:");
                 Console.Write("Фамилия и инициалы: ");
-                students[i].FullName = Console.ReadLine();
+                students[i].fullname = Console.ReadLine();
 
                 Console.Write("Номер группы: ");
-                students[i].GroupNumber = Console.ReadLine();
+                students[i].group = Console.ReadLine();
 
                 Console.WriteLine("Оценки по 5 дисциплинам:");
 
                 for (int j = 0; j < 5; j++)
                 {
                     Console.Write($"Оценка {j + 1}: ");
-                    students[i].Grades[j] = Int32.Parse(Console.ReadLine());
+                    students[i].grades[j] = Int32.Parse(Console.ReadLine());
                 }
             }
 
@@ -50,14 +50,14 @@ class Program
 
             foreach (var student in students)
             {
-                bool Excellent = Array.TrueForAll(student.Grades, grade => grade >= 4);
+                bool Excellent = Array.TrueForAll(student.grades, grade => grade >= 4);
 
                 if (Excellent)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nСтуденты с оценками 4 и 5:");
-                    Console.WriteLine($"Фамилия и инициалы: {student.FullName}, Номер группы: {student.GroupNumber}");
-                    double average = student.Grades.Average();
+                    Console.WriteLine($"Фамилия и инициалы: {student.fullname}, Номер группы: {student.group}");
+                    double average = student.grades.Average();
                     Console.WriteLine($"Средний балл: {average:F2}");
                     Console.ForegroundColor = ConsoleColor.White;
                     flag = true;
@@ -75,12 +75,12 @@ class Program
 
             foreach (var student in students)
             {
-                double average = student.Grades.Average();
+                double average = student.grades.Average();
 
                 if (average >= 4.5)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Студент: {student.FullName}, Средний балл: {average:F2}");
+                    Console.WriteLine($"Студент: {student.fullname}, Средний балл: {average:F2}");
                     excellent++;
                     Console.ForegroundColor = ConsoleColor.White;
                 }
